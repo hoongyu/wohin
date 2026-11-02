@@ -1,0 +1,16 @@
+{
+  "backbone": "clip",
+  "config": {
+    "kind": "open_clip",
+    "arch": "ViT-B-32",
+    "pretrained": "laion2b_e16",
+    "url": "https://github.com/mlfoundations/open_clip/releases/download/v0.2-weights/vit_b_32-laion2b_e16-af8dbd0c.pth"
+  },
+  "n_images": 7279,
+  "dim": 512,
+  "load_seconds": 25.0,
+  "embed_seconds": 256.9,
+  "images_per_second": 28.3,
+  "latency_ms_single_image": 55.9,
+  "torch_threads": 4
+}

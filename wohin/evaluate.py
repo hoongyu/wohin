@@ -27,6 +27,7 @@ from wohin.train import METRICS_DIR, MODEL_DIR, TARGET_ACCURACY, load_split_data
 IMG_DIR = ROOT / "docs" / "img"
 ZS_TEXT = MODEL_DIR / "zeroshot_text_clip.npy"
 NEAR_DUP_COS = 0.95
+MIN_BIN = 10
 
 # Prompt ensemble for the zero-shot baseline: several names per class x several templates.
 ZS_NAMES = {
@@ -131,14 +132,15 @@ def plot_reliability(curves: dict[str, tuple[list[dict], float]], path: Path) ->
     ax.plot([0, 1], [0, 1], ls="--", color="grey", lw=1, label="perfect calibration")
     markers = ["o", "s", "^", "D"]
     for (name, (bins, e)), mk in zip(curves.items(), markers):
-        xs = [b["confidence"] for b in bins if b["count"] > 0]
-        ys = [b["accuracy"] for b in bins if b["count"] > 0]
+        kept = [b for b in bins if b["count"] >= MIN_BIN]  # tiny bins are pure noise
+        xs = [b["confidence"] for b in kept]
+        ys = [b["accuracy"] for b in kept]
         ax.plot(xs, ys, marker=mk, label=f"{name} (ECE {e:.3f})")
     ax.set_xlabel("confidence (max probability)")
     ax.set_ylabel("accuracy")
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.set_title("Reliability on the test split")
+    ax.set_title(f"Reliability on the test split (bins with >= {MIN_BIN} images)")
     ax.legend(loc="upper left", fontsize=8)
     fig.tight_layout()
     fig.savefig(path)
