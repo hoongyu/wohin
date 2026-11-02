@@ -184,7 +184,8 @@ wohin/lexicon.py       DE/EN text search over rules/items.yaml
 artifacts/model/       trained heads (committed, ~30 KB each) + zero-shot text embeddings
 artifacts/metrics/     train.json, test.json, embedding timings
 docs/judging/          how Wohin addresses each judging criterion
-deploy/huggingface/    Space metadata and deployment steps
+docs/submission/       Devpost text, ready to paste
+deploy/huggingface/    Docker Space (Dockerfile, Space README, make_space.py) and deployment steps
 ```
 
 ## 11. Disclosure: tools, models, data

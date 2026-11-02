@@ -81,13 +81,22 @@ Also: GitHub web pages and api.github.com returned 403 through the proxy, but `g
 
 1. **Lid colours.** The bin card shows a colour swatch for every bin. Our sources state the Wertstofftonne lid colour (yellow or orange) and the glass colours, but not the paper bin, Biotonne or household-waste lid colours. Those swatches (blue, brown, dark grey) follow common practice but the text does not name a colour (`colour_verified: false` in `rules/berlin.yaml`). Owner: check and either confirm with a source or keep as is.
 2. **Domain gap.** No test on photos taken in Berlin households; dataset photos are single items on a white background (TrashNet) or landfill (RealWaste).
-3. **Deployment not tested.** `requirements.txt` uses the CPU wheel index of download.pytorch.org, which was blocked here, so the Space build could not be tested in this session. If the build fails, remove the `--extra-index-url` line (PyPI wheels work but are larger).
+3. **Deployment.** download.pytorch.org was blocked here, so the Space build could not be tested in this session. Checked afterwards on the owner's laptop, see "Local Docker check" below. Hugging Face retired its built-in Streamlit SDK on 2025-04-30 and a Space without a Dockerfile defaults to Python 3.10, which scikit-learn 1.9.1 and Streamlit 1.66.1 do not support, so the Space now builds from `deploy/huggingface/Dockerfile`.
 4. **scikit-learn pinned to 1.9.1** in `requirements.txt`, because `head.joblib` is a pickled scikit-learn pipeline.
 5. **Session state:** the photo and search tabs keep separate state. Uploading a new photo resets the photo flow; changing the search query resets the search flow.
 6. **Camera input** sits behind a "Use camera" toggle. It needs HTTPS or localhost to get browser camera permission (fine on HF Spaces).
 7. **Item coverage:** 60 lexicon items; 9 are `verified: false` and only link to the BSR A–Z with a hint that repeats verified facts.
 8. **The battery outcome is `partial`:** the Senate page bans batteries from the Wertstofftonne, but the take-back advice is not in our sources.
 9. **RealWaste licence:** we used the authors' GitHub mirror (README: CC BY-NC-SA 4.0) because UCI (CC BY 4.0) was blocked. No images are redistributed. Screenshots only show TrashNet (MIT) images.
+
+## Local Docker check (2026-11-02, after the cloud session)
+
+Run by the owner's local Claude Code session on the owner's Windows 11 laptop (Docker 29.5.2), on the folder that `deploy/huggingface/make_space.py` writes, which is what the Space receives:
+
+- `uv sync` and `uv run pytest -q` on branch `mvp`: 34 passed in 32.6 s.
+- `docker build` finished in 1,160 s: `pip install -r requirements.txt` 249 s (torch 2.15.0+cpu and torchvision 0.29.2+cpu from the CPU index), weight download 79 s, unpacking the 3.57 GB image 414 s.
+- `docker run -p 18501:8501`: `/_stcore/health` returned `ok`, `GET /` returned HTTP 200.
+- In a container started with `--network none`, the bottle photo cropped from `docs/img/app_photo_prediction.png` gave glass 0.999 (confident), as in that screenshot. First prediction 38.3 s including model load, then 0.09 s.
 
 ## What the owner still has to do
 
@@ -98,4 +107,4 @@ Also: GitHub web pages and api.github.com returned 403 through the proxy, but `g
 - [ ] Try the deployed app with a few real photos from home; consider adding them as a qualitative example (do not add to the metrics).
 - [ ] Optionally record a narrated demo video (a GIF made from screenshots is at `docs/img/demo.gif`).
 - [ ] Merge `mvp` into `main` (or open a PR yourself), then make the repository public.
-- [ ] Submit on Devpost: Neural Storm before **2026-11-04 15:30 CET**; Green Shift Hacks before **2026-11-17 23:00 CET** (use `docs/judging/green-shift.md` for the story).
+- [ ] Submit on Devpost (text ready in `docs/submission/neural-storm.md`): Neural Storm before **2026-11-04 15:30 CET**; Green Shift Hacks before **2026-11-17 23:00 CET** (use `docs/judging/green-shift.md` for the story).

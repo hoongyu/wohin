@@ -3,11 +3,12 @@ title: Wohin
 emoji: ♻️
 colorFrom: green
 colorTo: yellow
-sdk: streamlit
-sdk_version: "1.66.1"
-app_file: app.py
+sdk: docker
+app_port: 8501
 pinned: false
 short_description: Photo-based waste sorting assistant for Berlin
+tags:
+  - streamlit
 ---
 
 # Wohin – where does it go?

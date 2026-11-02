@@ -27,5 +27,5 @@ The README covers every required item: title and problem statement number, team 
 ## Demo & Presentation (20 %)
 
 - **Working demo:** `uv run streamlit run app.py`. Screenshots in `docs/img/` were taken automatically from the running app (photo → prediction → questions → bin card; low-confidence path; English and German text search).
-- **Deployment:** Hugging Face Space files are ready (`requirements.txt`, `deploy/huggingface/README.md`); the owner deploys and adds the link.
+- **Deployment:** a Hugging Face Docker Space is ready in `deploy/huggingface/` (Dockerfile, Space README, `make_space.py`, `DEPLOY.md`); the image was built and run locally, and it predicts offline because the weights are baked in (`docs/build-log.md`, "Local Docker check"). The owner deploys and adds the link.
 - **Demo GIF:** `docs/img/demo.gif`.
