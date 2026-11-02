@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+data/raw/
+artifacts/embeddings/
+artifacts/weights/
+*.pth
+*.pt
+*.safetensors
+.pytest_cache/
+.streamlit/secrets.toml

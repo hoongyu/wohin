@@ -1,0 +1,355 @@
+# Berlin waste rules for Wohin.
+# Every fact below comes from docs/cloud-task.md, appendix A (sources checked on 2026-11-02).
+# verified: true    -> stated directly by the linked source
+# verified: partial -> recommendation or default; the app shows it with a "check the BSR A-Z" note
+# verified: false   -> not covered by our sources; the app only links to the BSR A-Z
+meta:
+  as_of: "2026-11-02"
+  bsr_az: https://www.bsr.de/abfall-abc
+
+sources:
+  wertstoff: https://www.berlin.de/sen/uvk/umwelt/kreislaufwirtschaft/service/privathaushalte/wertstoffsammlung/
+  bio: https://www.berlin.de/sen/uvk/umwelt/kreislaufwirtschaft/projekte/bioabfaelle/biotonne-in-wohnanlagen/was-kommt-in-die-biotonne/
+  glass_colour: https://www.test.de/Recycling-Buntglas-entsorgen-4780597-0/
+  deposit: https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/abfall/fragen-und-antworten-alles-zum-einwegpfand-und-dosenpfand-11505
+  electro: https://www.umweltbundesamt.de/presse/pressemitteilungen/25000-zusaetzliche-rueckgabestellen-fuer
+  textile: https://www.berlin.de/sen/uvk/umwelt/kreislaufwirtschaft/service/privathaushalte/alttextilien/
+  bsr_az: https://www.bsr.de/abfall-abc
+
+# Bins. `colour` is the swatch shown on the bin card (always next to a text label).
+# colour_verified: false means the lid colour is not stated in our sources; the card
+# then does not name a colour in text.
+bins:
+  wertstofftonne:
+    colour: "#F2C200"
+    colour_verified: true
+    label: {de: "Wertstofftonne (gelber oder oranger Deckel)", en: "Wertstofftonne / recycling bin (yellow or orange lid)"}
+  paper:
+    colour: "#1F5FBF"
+    colour_verified: false
+    label: {de: "Papiertonne (Papier, Pappe, Karton)", en: "Paper bin (paper, cardboard, card)"}
+  biotonne:
+    colour: "#7B4A1E"
+    colour_verified: false
+    label: {de: "Biotonne", en: "Biotonne / organic waste bin"}
+  hausmuell:
+    colour: "#3A3A3A"
+    colour_verified: false
+    label: {de: "Hausmüll (Restmüll)", en: "Household waste (residual)"}
+  glass_white:
+    colour: "#EDEDED"
+    colour_verified: true
+    label: {de: "Glascontainer: Weißglas", en: "Glass container: white (clear) glass"}
+  glass_green:
+    colour: "#2E7D32"
+    colour_verified: true
+    label: {de: "Glascontainer: Grünglas", en: "Glass container: green glass"}
+  glass_brown:
+    colour: "#6D3B12"
+    colour_verified: true
+    label: {de: "Glascontainer: Braunglas", en: "Glass container: brown glass"}
+  deposit:
+    colour: "#00897B"
+    colour_verified: true
+    label: {de: "Pfand: zurück in den Laden (25 Cent)", en: "Deposit: return to a shop (25 cents)"}
+  electro:
+    colour: "#C62828"
+    colour_verified: true
+    label: {de: "Elektro-Rücknahme (Handel oder BSR-Recyclinghof)", en: "Electrical take-back (shop or BSR recycling centre)"}
+  battery:
+    colour: "#C62828"
+    colour_verified: true
+    label: {de: "Batterie-Rücknahme (Handel oder BSR-Recyclinghof)", en: "Battery take-back (shop or BSR recycling centre)"}
+  textile:
+    colour: "#8E24AA"
+    colour_verified: true
+    label: {de: "Altkleidercontainer oder Spende", en: "Textile collection container or donation"}
+  check:
+    colour: "#9E9E9E"
+    colour_verified: true
+    label: {de: "Bitte im BSR-Abfall-ABC nachsehen", en: "Please check the BSR A–Z"}
+
+# Questions. Every question gets an automatic "I'm not sure" option (answer value: unsure).
+questions:
+  glass_packaging:
+    text: {de: "Ist es eine Flasche oder ein Glas (Verpackung)?", en: "Is it a bottle or a jar (packaging)?"}
+    options:
+      yes: {de: "Ja, Flasche oder Glas", en: "Yes, a bottle or jar"}
+      no: {de: "Nein, etwas anderes", en: "No, something else"}
+  glass_kind:
+    text: {de: "Was für ein Glas ist es?", en: "What kind of glass is it?"}
+    options:
+      tableware: {de: "Trinkglas oder Geschirr", en: "Drinking glass or tableware"}
+      mirror: {de: "Spiegel", en: "Mirror"}
+      bulb: {de: "Glühbirne oder Lampe", en: "Light bulb or lamp"}
+      other: {de: "Fensterglas oder anderes", en: "Window glass or other"}
+  deposit_logo:
+    text: {de: "Ist es eine Einwegflasche oder Dose mit Pfandlogo (DPG)?", en: "Is it a single-use bottle or can with the deposit logo (DPG)?"}
+    options:
+      yes: {de: "Ja, mit Pfandlogo", en: "Yes, it has the deposit logo"}
+      no: {de: "Nein", en: "No"}
+  glass_colour:
+    text: {de: "Welche Farbe hat das Glas?", en: "What colour is the glass?"}
+    options:
+      white: {de: "Weiß / durchsichtig", en: "White / clear"}
+      brown: {de: "Braun", en: "Brown"}
+      green: {de: "Grün", en: "Green"}
+      other: {de: "Andere Farbe (blau, rot …)", en: "Other colour (blue, red …)"}
+  electro:
+    text: {de: "Ist es ein Elektrogerät oder eine Batterie?", en: "Is it an electrical device or a battery?"}
+    options:
+      device: {de: "Elektrogerät (Kabel, Akku, Batterie drin)", en: "Electrical device (cable, rechargeable or battery inside)"}
+      battery: {de: "Batterie oder Akku", en: "Battery"}
+      no: {de: "Nein", en: "No"}
+  kitchen_paper:
+    text: {de: "Ist es benutztes Küchenpapier?", en: "Is it used kitchen paper?"}
+    options:
+      yes: {de: "Ja", en: "Yes"}
+      no: {de: "Nein", en: "No"}
+  carton:
+    text: {de: "Ist es ein Getränkekarton (z. B. Tetra Pak)?", en: "Is it a beverage carton (e.g. Tetra Pak)?"}
+    options:
+      yes: {de: "Ja", en: "Yes"}
+      no: {de: "Nein", en: "No"}
+  in_packaging:
+    text: {de: "Ist das Essen noch verpackt?", en: "Is the food still in its packaging?"}
+    options:
+      yes: {de: "Ja, verpackt", en: "Yes, packaged"}
+      no: {de: "Nein", en: "No"}
+  wearable:
+    text: {de: "Ist es noch tragbar und sauber?", en: "Is it still wearable and clean?"}
+    options:
+      yes: {de: "Ja", en: "Yes"}
+      no: {de: "Nein, kaputt oder schmutzig", en: "No, worn out or dirty"}
+  hygiene:
+    text: {de: "Ist es ein Hygieneartikel, eine Windel, ein Staubsaugerbeutel, Katzenstreu oder kalte Asche?", en: "Is it a hygiene product, nappy, vacuum cleaner bag, cat litter or cold ash?"}
+    options:
+      yes: {de: "Ja", en: "Yes"}
+      no: {de: "Nein", en: "No"}
+
+outcomes:
+  wertstofftonne:
+    bin: wertstofftonne
+    verified: true
+    source: wertstoff
+    text:
+      de: "Verpackungen und auch Nicht-Verpackungen aus Metall, Kunststoff und Verbundstoffen gehören in Berlin in die Wertstofftonne. Nicht hinein: Elektrogeräte, Batterien, Glas, Papier, Textilien, Holz, Essens- und Gartenabfälle."
+      en: "In Berlin, packaging and also non-packaging items made of metal, plastic or composites go into the Wertstofftonne. Not allowed: electrical devices, batteries, glass, paper, textiles, wood, food and garden waste."
+  wertstofftonne_carton:
+    bin: wertstofftonne
+    verified: true
+    source: wertstoff
+    text:
+      de: "Getränkekartons sind Verbundverpackungen und gehören in die Wertstofftonne, nicht ins Altpapier."
+      en: "Beverage cartons are composite packaging and go into the Wertstofftonne, not the paper bin."
+  deposit:
+    bin: deposit
+    verified: true
+    source: deposit
+    text:
+      de: "Einwegflaschen und Dosen mit DPG-Pfandlogo kosten 25 Cent Pfand. Geschäfte müssen Behälter aus demselben Material zurücknehmen, egal welche Marke, Form oder wo sie gekauft wurden."
+      en: "Single-use bottles and cans with the DPG deposit logo carry a 25 cent deposit. Shops must take back containers of the same material regardless of brand, shape or where they were bought."
+  glass_white:
+    bin: glass_white
+    verified: true
+    source: wertstoff
+    text:
+      de: "Verpackungsglas kommt nach Farbe sortiert in den Glascontainer. Metalldeckel abnehmen: sie gehören in die Wertstofftonne."
+      en: "Packaging glass goes into the glass container, sorted by colour. Take off metal lids: they go into the Wertstofftonne."
+  glass_brown:
+    bin: glass_brown
+    verified: true
+    source: wertstoff
+    text:
+      de: "Verpackungsglas kommt nach Farbe sortiert in den Glascontainer. Metalldeckel abnehmen: sie gehören in die Wertstofftonne."
+      en: "Packaging glass goes into the glass container, sorted by colour. Take off metal lids: they go into the Wertstofftonne."
+  glass_green:
+    bin: glass_green
+    verified: true
+    source: wertstoff
+    text:
+      de: "Verpackungsglas kommt nach Farbe sortiert in den Glascontainer. Metalldeckel abnehmen: sie gehören in die Wertstofftonne."
+      en: "Packaging glass goes into the glass container, sorted by colour. Take off metal lids: they go into the Wertstofftonne."
+  glass_other_colour:
+    bin: glass_green
+    verified: partial
+    source: glass_colour
+    text:
+      de: "Glas in anderen oder unklaren Farben (blau, rot …) gehört laut Verbraucher- und Recyclingempfehlungen zum Grünglas. Der Senat nennt das nicht ausdrücklich."
+      en: "Glass in other or unclear colours (blue, red …) goes with green glass according to consumer and recycling guidance. The Senate page does not say this explicitly."
+  glass_household:
+    bin: hausmuell
+    verified: partial
+    source: wertstoff
+    text:
+      de: "Trinkgläser, Glasgeschirr und Spiegel sind kein Verpackungsglas und gehören nicht in den Glascontainer (belegt). Sie gelten als Hausmüll; das ist eine Standardregel, keine ausdrückliche Quellenangabe."
+      en: "Drinking glasses, glass tableware and mirrors are not packaging glass and must not go into the glass container (verified). They default to household waste; this is a default, not stated directly by the source."
+  glass_bulb:
+    bin: check
+    verified: false
+    source: bsr_az
+    text:
+      de: "Glühbirnen gehören nicht in den Glascontainer (belegt). Wohin genau, sagen unsere Quellen nicht. Bitte im BSR-Abfall-ABC nachsehen."
+      en: "Light bulbs must not go into the glass container (verified). Our sources do not say where exactly they go. Please check the BSR A–Z."
+  glass_not_packaging:
+    bin: check
+    verified: false
+    source: bsr_az
+    text:
+      de: "Glas, das keine Verpackung ist (z. B. Fensterglas), gehört nicht in den Glascontainer (belegt). Wohin genau, sagen unsere Quellen nicht. Bitte im BSR-Abfall-ABC nachsehen."
+      en: "Glass that is not packaging (e.g. window glass) must not go into the glass container (verified). Our sources do not say where exactly it goes. Please check the BSR A–Z."
+  electro:
+    bin: electro
+    verified: true
+    source: electro
+    text:
+      de: "Elektro-Kleingeräte (bis 25 cm Kantenlänge) nehmen seit Juli 2022 auch Lebensmittelmärkte ab 800 m² Verkaufsfläche, die Elektrogeräte verkaufen, kostenlos zurück. Auch BSR-Recyclinghöfe nehmen sie an. Nie in die Wertstofftonne."
+      en: "Since July 2022, food retailers with at least 800 m² of sales area that sell electrical devices must take back small devices (up to 25 cm edge length) free of charge. BSR recycling centres accept them too. Never in the Wertstofftonne."
+  battery:
+    bin: battery
+    verified: partial
+    source: wertstoff
+    text:
+      de: "Batterien nie in den Hausmüll und nie in die Wertstofftonne (für die Wertstofftonne belegt). Zurück in Geschäfte, die Batterien verkaufen, oder zum BSR-Recyclinghof (Empfehlung, von unseren Quellen nicht direkt abgedeckt)."
+      en: "Batteries never go into household waste or the Wertstofftonne (verified for the Wertstofftonne). Return them to shops that sell batteries or to a BSR recycling centre (guidance, not directly covered by our sources)."
+  paper:
+    bin: paper
+    verified: true
+    source: wertstoff
+    text:
+      de: "Bedrucktes Papier und Verpackungen aus Papier, Pappe und Karton gehören in die Papiertonne."
+      en: "Printed paper and packaging made of paper, cardboard and card go into the paper bin."
+  kitchen_paper:
+    bin: biotonne
+    verified: true
+    source: bio
+    text:
+      de: "Küchenpapier darf laut BSR-Liste in die Biotonne."
+      en: "Kitchen paper is allowed in the Biotonne according to the BSR list."
+  biotonne:
+    bin: biotonne
+    verified: true
+    source: bio
+    text:
+      de: "Essensreste (auch gekocht, in Zeitungspapier), Obst- und Gemüsereste, Schalen, Eierschalen, Kaffeesatz, Tee und Teebeutel, Grünschnitt, Laub und Blumen gehören in die Biotonne. Papiertüten sind erlaubt, Plastiktüten und \"kompostierbare\" Plastiktüten nicht. Küchenabfälle liefern das meiste Biogas."
+      en: "Food leftovers (cooked too, wrapped in newspaper), fruit and vegetable scraps, peel, eggshells, coffee grounds, tea and tea bags, green cuttings, leaves and flowers go into the Biotonne. Paper bags are fine; plastic bags and \"compostable\" plastic bags are not. Kitchen waste produces the most biogas."
+  biotonne_unpack:
+    bin: biotonne
+    verified: true
+    source: bio
+    text:
+      de: "Erst auspacken: Verpackungen sind in der Biotonne verboten. Das Essen kommt in die Biotonne, die Verpackung je nach Material (z. B. Kunststoff in die Wertstofftonne)."
+      en: "Unpack it first: packaging is not allowed in the Biotonne. The food goes into the Biotonne, the packaging by its material (e.g. plastic into the Wertstofftonne)."
+  textile_collection:
+    bin: textile
+    verified: true
+    source: textile
+    text:
+      de: "Tragbare Kleidung und Schuhe gehören in Altkleidercontainer oder werden gespendet."
+      en: "Wearable clothes and shoes go into textile collection containers or to donation."
+  textile_household:
+    bin: hausmuell
+    verified: partial
+    source: textile
+    text:
+      de: "Kaputte, schmutzige oder verunreinigte Textilien gehören laut Antworten des Senats auf parlamentarische Anfragen (2025) in den Hausmüll. Medienberichte widersprechen dem teilweise."
+      en: "Worn-out, dirty or contaminated textiles go into household waste according to the Senate's answers to parliamentary questions (2025). Some media reports contradict this."
+  textile_unsure:
+    bin: textile
+    verified: partial
+    source: textile
+    text:
+      de: "Ist es noch tragbar, gehört es in den Altkleidercontainer oder zur Spende (belegt). Ist es kaputt oder schmutzig, laut Senat in den Hausmüll (umstritten)."
+      en: "If it is still wearable, it goes into a textile container or to donation (verified). If it is worn out or dirty, the Senate says household waste (disputed)."
+  household:
+    bin: hausmuell
+    verified: partial
+    source: bio
+    text:
+      de: "Hygieneartikel, Windeln, Staubsaugerbeutel, Katzenstreu und Asche sind in der Biotonne verboten und gehören in keine Wertstoffsammlung. Standardmäßig also Hausmüll."
+      en: "Hygiene products, nappies, vacuum cleaner bags, cat litter and ash are banned from the Biotonne and belong to no recycling stream, so they default to household waste."
+  check_bsr:
+    bin: check
+    verified: false
+    source: bsr_az
+    text:
+      de: "Dafür haben wir keine geprüfte Regel. Bitte im BSR-Abfall-ABC nachsehen."
+      en: "We do not have a verified rule for this. Please check the BSR A–Z."
+
+# Decision flows per material. A node is either {ask: question, then: {answer: node}}
+# or {outcome: id}. The "unsure" key says what happens when the user picks "I'm not sure".
+flows:
+  glass:
+    ask: glass_packaging
+    then:
+      yes: &glass_deposit
+        ask: deposit_logo
+        then:
+          yes: {outcome: deposit}
+          no: &glass_colour
+            ask: glass_colour
+            then:
+              white: {outcome: glass_white}
+              brown: {outcome: glass_brown}
+              green: {outcome: glass_green}
+              other: {outcome: glass_other_colour}
+              unsure: {outcome: glass_other_colour}
+          unsure: *glass_colour
+      no:
+        ask: glass_kind
+        then:
+          tableware: {outcome: glass_household}
+          mirror: {outcome: glass_household}
+          bulb: {outcome: glass_bulb}
+          other: {outcome: glass_not_packaging}
+          unsure: {outcome: glass_not_packaging}
+      unsure: {outcome: check_bsr}
+  plastic: &plastic_metal
+    ask: deposit_logo
+    then:
+      yes: {outcome: deposit}
+      no: &electro_then_wertstoff
+        ask: electro
+        then:
+          device: {outcome: electro}
+          battery: {outcome: battery}
+          no: {outcome: wertstofftonne}
+          unsure: {outcome: electro}
+      unsure: *electro_then_wertstoff
+  metal: *plastic_metal
+  paper: &paper_flow
+    ask: kitchen_paper
+    then:
+      yes: {outcome: kitchen_paper}
+      no: &carton
+        ask: carton
+        then:
+          yes: {outcome: wertstofftonne_carton}
+          no: {outcome: paper}
+          unsure: {outcome: check_bsr}
+      unsure: *carton
+  cardboard: *paper_flow
+  organic:
+    ask: in_packaging
+    then:
+      yes: {outcome: biotonne_unpack}
+      no: {outcome: biotonne}
+      unsure: {outcome: biotonne_unpack}
+  textile:
+    ask: wearable
+    then:
+      yes: {outcome: textile_collection}
+      no: {outcome: textile_household}
+      unsure: {outcome: textile_unsure}
+  residual:
+    ask: electro
+    then:
+      device: {outcome: electro}
+      battery: {outcome: battery}
+      no: &hygiene
+        ask: hygiene
+        then:
+          yes: {outcome: household}
+          no: {outcome: check_bsr}
+          unsure: {outcome: check_bsr}
+      unsure: *hygiene

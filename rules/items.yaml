@@ -1,0 +1,118 @@
+# Common items for text search (DE and EN names).
+# material: one of the 8 classes; answers: preset answers to the follow-up questions.
+# verified: false -> our sources (docs/cloud-task.md, appendix A) do not cover this item;
+#   the app links to the BSR A-Z and only shows the `hint`, which repeats verified facts.
+items:
+  # paper and cardboard
+  - {id: newspaper, de: [Zeitung, Zeitschrift, Prospekt], en: [newspaper, magazine, flyer], material: paper, answers: {kitchen_paper: no, carton: no}}
+  - {id: cardboard_box, de: [Karton, Pappkarton, Umzugskarton, Versandkarton], en: [cardboard box, shipping box, moving box], material: cardboard, answers: {kitchen_paper: no, carton: no}}
+  - {id: egg_carton, de: [Eierkarton], en: [egg carton, egg box], material: cardboard, answers: {kitchen_paper: no, carton: no}}
+  - {id: paper_bag, de: [Papiertüte], en: [paper bag], material: paper, answers: {kitchen_paper: no, carton: no}}
+  - {id: envelope, de: [Briefumschlag, Brief], en: [envelope, letter], material: paper, answers: {kitchen_paper: no, carton: no}}
+  - {id: kitchen_paper, de: [Küchenpapier, Küchenrolle], en: [kitchen paper, paper towel, kitchen roll], material: paper, answers: {kitchen_paper: yes}}
+  - {id: beverage_carton, de: [Tetra Pak, Getränkekarton, Milchkarton, Saftkarton], en: [tetra pak, beverage carton, milk carton, juice carton], material: paper, answers: {kitchen_paper: no, carton: yes}}
+  - id: pizza_box
+    de: [Pizzakarton]
+    en: [pizza box]
+    material: cardboard
+    verified: false
+    hint: {de: "Saubere Pappe gehört in die Papiertonne (belegt). Ob verschmutzte oder fettige Kartons angenommen werden, sagen unsere Quellen nicht.", en: "Clean cardboard goes into the paper bin (verified). Our sources do not say whether greasy or food-soiled boxes are accepted."}
+  - id: receipt
+    de: [Kassenbon, Quittung, Kassenzettel]
+    en: [receipt, till receipt]
+    material: paper
+    verified: false
+    hint: {de: "Kassenbons sind oft Thermopapier. Unsere Quellen sagen nichts dazu.", en: "Receipts are often thermal paper. Our sources do not cover them."}
+  - id: tissue
+    de: [Taschentuch, Papiertaschentuch, Serviette]
+    en: [tissue, paper tissue, napkin]
+    material: paper
+    verified: false
+    hint: {de: "Küchenpapier darf in die Biotonne (belegt). Taschentücher und Servietten nennen unsere Quellen nicht.", en: "Kitchen paper may go into the Biotonne (verified). Our sources do not mention tissues or napkins."}
+  - id: coffee_cup
+    de: [Coffee-to-go-Becher, Kaffeebecher, Pappbecher]
+    en: [coffee cup, takeaway cup, paper cup]
+    material: paper
+    verified: false
+    hint: {de: "Verbundverpackungen gehören in die Wertstofftonne (belegt). Ob dein Becher eine ist, können wir nicht prüfen.", en: "Composite packaging goes into the Wertstofftonne (verified). We cannot tell whether your cup is one."}
+  # glass
+  - {id: glass_bottle, de: [Glasflasche, Flasche aus Glas], en: [glass bottle], material: glass, answers: {glass_packaging: yes}}
+  - {id: wine_bottle, de: [Weinflasche, Sektflasche], en: [wine bottle, sparkling wine bottle], material: glass, answers: {glass_packaging: yes, deposit_logo: no}}
+  - {id: jar, de: [Marmeladenglas, Einmachglas, Gurkenglas, Schraubglas], en: [jam jar, jar, glass jar, pickle jar], material: glass, answers: {glass_packaging: yes, deposit_logo: no}}
+  - {id: drinking_glass, de: [Trinkglas, Glasgeschirr, Weinglas], en: [drinking glass, glass tableware, wine glass], material: glass, answers: {glass_packaging: no, glass_kind: tableware}}
+  - {id: mirror, de: [Spiegel], en: [mirror], material: glass, answers: {glass_packaging: no, glass_kind: mirror}}
+  - {id: light_bulb, de: [Glühbirne, Glühlampe], en: [light bulb, bulb], material: glass, answers: {glass_packaging: no, glass_kind: bulb}}
+  - {id: window_glass, de: [Fensterglas, Fensterscheibe], en: [window glass, window pane], material: glass, answers: {glass_packaging: no, glass_kind: other}}
+  # plastic
+  - {id: deposit_bottle, de: [Pfandflasche, PET-Flasche mit Pfand, Plastikflasche mit Pfand], en: [deposit bottle, pet bottle with deposit, plastic bottle with deposit], material: plastic, answers: {deposit_logo: yes}}
+  - {id: yogurt_pot, de: [Joghurtbecher], en: [yogurt pot, yoghurt cup, yogurt cup], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: plastic_bag, de: [Plastiktüte, Plastiktasche], en: [plastic bag], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: cling_film, de: [Frischhaltefolie, Plastikfolie, Folie], en: [cling film, plastic film, plastic wrap], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: shampoo_bottle, de: [Shampooflasche, Duschgelflasche, Spülmittelflasche], en: [shampoo bottle, shower gel bottle, detergent bottle], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: polystyrene, de: [Styropor], en: [polystyrene, styrofoam], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: plastic_toy, de: [Plastikspielzeug], en: [plastic toy], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: toothbrush, de: [Zahnbürste], en: [toothbrush], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: blister, de: [Tablettenblister, Blisterverpackung], en: [blister pack, pill blister], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - {id: crisp_bag, de: [Chipstüte], en: [crisp bag, chips bag], material: plastic, answers: {deposit_logo: no, electro: no}}
+  - id: compostable_bag
+    de: [kompostierbare Tüte, Biobeutel aus Plastik, Bioplastiktüte]
+    en: [compostable bag, compostable plastic bag, bioplastic bag]
+    material: plastic
+    verified: false
+    hint: {de: "\"Kompostierbare\" Plastiktüten sind in der Biotonne verboten (belegt). Wohin sonst, sagen unsere Quellen nicht.", en: "\"Compostable\" plastic bags are not allowed in the Biotonne (verified). Our sources do not say where else they go."}
+  # metal
+  - {id: deposit_can, de: [Getränkedose, Bierdose, Dose mit Pfand], en: [drink can, beer can, can with deposit], material: metal, answers: {deposit_logo: yes}}
+  - {id: tin_can, de: [Konservendose, Blechdose], en: [tin can, food can], material: metal, answers: {deposit_logo: no, electro: no}}
+  - {id: alu_foil, de: [Alufolie, Aluminiumfolie], en: [aluminium foil, aluminum foil, tin foil], material: metal, answers: {deposit_logo: no, electro: no}}
+  - {id: bottle_cap, de: [Kronkorken, Flaschendeckel], en: [bottle cap, crown cap], material: metal, answers: {deposit_logo: no, electro: no}}
+  - {id: jar_lid, de: [Schraubdeckel, Metalldeckel], en: [jar lid, metal lid], material: metal, answers: {deposit_logo: no, electro: no}}
+  - {id: pot, de: [Kochtopf, Pfanne], en: [cooking pot, pan, frying pan], material: metal, answers: {deposit_logo: no, electro: no}}
+  - id: spray_can
+    de: [Spraydose, Sprühdose, Deodose]
+    en: [spray can, aerosol can, deodorant can]
+    material: metal
+    verified: false
+    hint: {de: "Unsere Quellen sagen nichts zu Spraydosen.", en: "Our sources do not cover spray cans."}
+  - id: tealight
+    de: [Teelicht]
+    en: [tealight, tea light]
+    material: metal
+    verified: false
+    hint: {de: "Metallverpackungen gehören in die Wertstofftonne (belegt); Teelichter nennen unsere Quellen nicht.", en: "Metal packaging goes into the Wertstofftonne (verified); our sources do not mention tealights."}
+  # electrical devices and batteries
+  - {id: battery, de: [Batterie, Akku], en: [battery, rechargeable battery], material: residual, answers: {electro: battery}}
+  - {id: phone, de: [Handy, Smartphone], en: [mobile phone, smartphone, phone], material: residual, answers: {electro: device}}
+  - {id: cable, de: [Ladekabel, Kabel, Ladegerät], en: [charging cable, cable, charger], material: residual, answers: {electro: device}}
+  - {id: e_toothbrush, de: [elektrische Zahnbürste], en: [electric toothbrush], material: residual, answers: {electro: device}}
+  - id: led_lamp
+    de: [Energiesparlampe, LED-Lampe]
+    en: [energy saving lamp, led bulb, led lamp]
+    material: residual
+    verified: false
+    hint: {de: "Lampen gehören nicht in den Glascontainer (belegt). Wohin genau, sagen unsere Quellen nicht.", en: "Lamps must not go into the glass container (verified). Our sources do not say where exactly they go."}
+  # organic
+  - {id: banana_peel, de: [Bananenschale, Obstschale, Obstreste], en: [banana peel, fruit peel, fruit scraps], material: organic, answers: {in_packaging: no}}
+  - {id: citrus_peel, de: [Orangenschale, Zitronenschale, Zitrusschale], en: [orange peel, lemon peel, citrus peel], material: organic, answers: {in_packaging: no}}
+  - {id: vegetable_scraps, de: [Gemüsereste, Kartoffelschalen], en: [vegetable scraps, potato peel], material: organic, answers: {in_packaging: no}}
+  - {id: eggshells, de: [Eierschalen, Eierschale], en: [eggshells, eggshell], material: organic, answers: {in_packaging: no}}
+  - {id: coffee_grounds, de: [Kaffeesatz, Kaffeefilter], en: [coffee grounds, coffee filter], material: organic, answers: {in_packaging: no}}
+  - {id: tea_bag, de: [Teebeutel, Tee], en: [tea bag, tea leaves], material: organic, answers: {in_packaging: no}}
+  - {id: leftovers, de: [Essensreste, Speisereste], en: [food leftovers, leftovers, food scraps], material: organic, answers: {in_packaging: no}}
+  - {id: spoiled_packaged_food, de: [verdorbene Lebensmittel in Verpackung, abgelaufener Joghurt], en: [spoiled food in packaging, expired yogurt], material: organic, answers: {in_packaging: yes}}
+  - {id: leaves, de: [Laub, Blätter, Blumen, Grünschnitt], en: [leaves, flowers, green cuttings, garden cuttings], material: organic, answers: {in_packaging: no}}
+  # residual
+  - {id: nappy, de: [Windel, Windeln], en: [nappy, diaper], material: residual, answers: {electro: no, hygiene: yes}}
+  - {id: vacuum_bag, de: [Staubsaugerbeutel], en: [vacuum cleaner bag, vacuum bag], material: residual, answers: {electro: no, hygiene: yes}}
+  - {id: cat_litter, de: [Katzenstreu, Kleintierstreu], en: [cat litter, small animal litter], material: residual, answers: {electro: no, hygiene: yes}}
+  - {id: ash, de: [Asche], en: [ash, cold ash], material: residual, answers: {electro: no, hygiene: yes}}
+  - {id: hygiene_product, de: [Tampon, Binde, Hygieneartikel, Wattepad], en: [tampon, sanitary pad, hygiene product, cotton pad], material: residual, answers: {electro: no, hygiene: yes}}
+  - id: cigarette
+    de: [Zigarettenstummel, Kippe]
+    en: [cigarette butt]
+    material: residual
+    verified: false
+    hint: {de: "Unsere Quellen sagen nichts zu Zigarettenstummeln.", en: "Our sources do not cover cigarette butts."}
+  # textile
+  - {id: clothes, de: [Kleidung, Altkleider, T-Shirt, Jacke], en: [clothes, clothing, t-shirt, jacket], material: textile, answers: {wearable: yes}}
+  - {id: shoes, de: [Schuhe], en: [shoes], material: textile, answers: {wearable: yes}}
+  - {id: worn_textiles, de: [kaputte Socken, Lumpen, kaputte Kleidung], en: [worn-out socks, rags, worn-out clothes], material: textile, answers: {wearable: no}}
