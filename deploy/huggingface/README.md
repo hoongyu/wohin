@@ -4,7 +4,7 @@ emoji: ♻️
 colorFrom: green
 colorTo: yellow
 sdk: streamlit
-sdk_version: "STREAMLIT_VERSION"
+sdk_version: "1.66.1"
 app_file: app.py
 pinned: false
 short_description: Photo-based waste sorting assistant for Berlin

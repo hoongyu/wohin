@@ -26,6 +26,7 @@ from wohin.train import METRICS_DIR, MODEL_DIR, TARGET_ACCURACY, load_split_data
 
 IMG_DIR = ROOT / "docs" / "img"
 ZS_TEXT = MODEL_DIR / "zeroshot_text_clip.npy"
+NEAR_DUP_COS = 0.95
 
 # Prompt ensemble for the zero-shot baseline: several names per class x several templates.
 ZS_NAMES = {
@@ -144,6 +145,29 @@ def plot_reliability(curves: dict[str, tuple[list[dict], float]], path: Path) ->
     plt.close(fig)
 
 
+def near_duplicate_check(data: dict, bundle: dict, threshold: float = NEAR_DUP_COS) -> dict:
+    """How many test images have a near-identical training image (CLIP cosine >= threshold)?
+
+    Near-duplicates across splits inflate test scores. We report the share and the head's accuracy
+    on the test images that have no near-duplicate in train.
+    """
+    tr, te = data["train"], data["test"]
+    sims = te["X"] @ tr["X"].T  # embeddings are L2-normalised
+    best = sims.max(1)
+    dup = best >= threshold
+    pred = probs_from_logits(bundle["head"].decision_function(te["X"]), bundle["temperature"]).argmax(1)
+    correct = pred == te["y"]
+    out = {
+        "cosine_threshold": threshold,
+        "test_with_near_duplicate_in_train": int(dup.sum()),
+        "share": float(dup.mean()),
+        "accuracy_on_test_without_near_duplicate": float(correct[~dup].mean()),
+        "accuracy_on_test_with_near_duplicate": float(correct[dup].mean()) if dup.any() else None,
+        "per_source_share": {s: float(dup[te["source"] == s].mean()) for s in sorted(set(te["source"]))},
+    }
+    return out
+
+
 def evaluate() -> dict:
     data = load_split_data("clip")
     va, te = data["val"], data["test"]
@@ -188,6 +212,8 @@ def evaluate() -> dict:
             plot_confusion(_confusion(cal, d["y"]), "Linear head on CLIP ViT-B/32, test split", IMG_DIR / "confusion_matrix.png")
             plot_confusion(_confusion(zs_test, te["y"]), "Zero-shot CLIP ViT-B/32, test split", IMG_DIR / "confusion_matrix_zeroshot.png")
     results["latency_ms_single_image_cpu"] = latency
+    if "head_clip" in results["models"]:
+        results["near_duplicates"] = near_duplicate_check(data, joblib.load(MODEL_DIR / "head.joblib"))
     plot_reliability(curves, IMG_DIR / "reliability.png")
     return results
 
@@ -212,6 +238,8 @@ def main(argv: list[str] | None = None) -> int:
     for name, r in results["models"].items():
         per = ", ".join(f"{s}: acc {v['accuracy']:.3f} / F1 {v['macro_f1']:.3f}" for s, v in r["per_source"].items())
         print(f"[evaluate] {name} per source -> {per}")
+    if "near_duplicates" in results:
+        print(f"[evaluate] near-duplicates: {json.dumps(results['near_duplicates'])}")
     print("[evaluate] wrote artifacts/metrics/test.json and docs/img/*.png")
     return 0
 
