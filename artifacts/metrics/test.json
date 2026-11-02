@@ -384,10 +384,197 @@
       "temperature": 0.6219170243667129,
       "C": 0.003,
       "description": "clip frozen embeddings + logistic regression, temperature-scaled"
+    },
+    "head_effnet": {
+      "n": 1093,
+      "accuracy": 0.868252516010979,
+      "macro_f1": 0.860841665204582,
+      "top3_accuracy": 0.9862763037511436,
+      "ece": 0.026075796560748155,
+      "per_class": {
+        "paper": {
+          "precision": 0.8647058823529412,
+          "recall": 0.8963414634146342,
+          "f1": 0.8802395209580839,
+          "support": 164
+        },
+        "cardboard": {
+          "precision": 0.8538461538461538,
+          "recall": 0.8604651162790697,
+          "f1": 0.8571428571428571,
+          "support": 129
+        },
+        "glass": {
+          "precision": 0.8633093525179856,
+          "recall": 0.8633093525179856,
+          "f1": 0.8633093525179856,
+          "support": 139
+        },
+        "metal": {
+          "precision": 0.8540540540540541,
+          "recall": 0.8729281767955801,
+          "f1": 0.8633879781420765,
+          "support": 181
+        },
+        "plastic": {
+          "precision": 0.8829268292682927,
+          "recall": 0.8578199052132701,
+          "f1": 0.8701923076923077,
+          "support": 211
+        },
+        "organic": {
+          "precision": 0.9919354838709677,
+          "recall": 0.968503937007874,
+          "f1": 0.9800796812749004,
+          "support": 127
+        },
+        "textile": {
+          "precision": 0.7818181818181819,
+          "recall": 0.8958333333333334,
+          "f1": 0.8349514563106796,
+          "support": 48
+        },
+        "residual": {
+          "precision": 0.7764705882352941,
+          "recall": 0.7021276595744681,
+          "f1": 0.7374301675977654,
+          "support": 94
+        }
+      },
+      "selective": {
+        "threshold": 0.7559999823570251,
+        "coverage": 0.7941445562671546,
+        "accuracy_on_covered": 0.9400921658986175,
+        "abstained": 225,
+        "top3_contains_true_on_abstained": 0.9555555555555556
+      },
+      "per_source": {
+        "realwaste": {
+          "n": 713,
+          "accuracy": 0.8709677419354839,
+          "macro_f1": 0.8574715691001745,
+          "top3_accuracy": 0.9831697054698457,
+          "ece": 0.03836203996630239,
+          "per_class": {
+            "paper": {
+              "precision": 0.8589743589743589,
+              "recall": 0.8933333333333333,
+              "f1": 0.8758169934640523,
+              "support": 75
+            },
+            "cardboard": {
+              "precision": 0.8382352941176471,
+              "recall": 0.8260869565217391,
+              "f1": 0.8321167883211679,
+              "support": 69
+            },
+            "glass": {
+              "precision": 0.8412698412698413,
+              "recall": 0.8412698412698413,
+              "f1": 0.8412698412698413,
+              "support": 63
+            },
+            "metal": {
+              "precision": 0.8617886178861789,
+              "recall": 0.8907563025210085,
+              "f1": 0.8760330578512396,
+              "support": 119
+            },
+            "plastic": {
+              "precision": 0.8759124087591241,
+              "recall": 0.8695652173913043,
+              "f1": 0.8727272727272727,
+              "support": 138
+            },
+            "organic": {
+              "precision": 1.0,
+              "recall": 0.968503937007874,
+              "f1": 0.984,
+              "support": 127
+            },
+            "textile": {
+              "precision": 0.7818181818181819,
+              "recall": 0.8958333333333334,
+              "f1": 0.8349514563106796,
+              "support": 48
+            },
+            "residual": {
+              "precision": 0.7878787878787878,
+              "recall": 0.7027027027027027,
+              "f1": 0.7428571428571429,
+              "support": 74
+            }
+          },
+          "selective": {
+            "threshold": 0.7559999823570251,
+            "coverage": 0.7727910238429172,
+            "accuracy_on_covered": 0.9455535390199638,
+            "abstained": 162,
+            "top3_contains_true_on_abstained": 0.9444444444444444
+          }
+        },
+        "trashnet": {
+          "n": 380,
+          "accuracy": 0.8631578947368421,
+          "macro_f1": 0.8454515619797799,
+          "top3_accuracy": 0.9921052631578947,
+          "ece": 0.024672138377239812,
+          "per_class": {
+            "paper": {
+              "precision": 0.8695652173913043,
+              "recall": 0.898876404494382,
+              "f1": 0.8839779005524862,
+              "support": 89
+            },
+            "cardboard": {
+              "precision": 0.8709677419354839,
+              "recall": 0.9,
+              "f1": 0.8852459016393442,
+              "support": 60
+            },
+            "glass": {
+              "precision": 0.881578947368421,
+              "recall": 0.881578947368421,
+              "f1": 0.881578947368421,
+              "support": 76
+            },
+            "metal": {
+              "precision": 0.8387096774193549,
+              "recall": 0.8387096774193549,
+              "f1": 0.8387096774193549,
+              "support": 62
+            },
+            "plastic": {
+              "precision": 0.8970588235294118,
+              "recall": 0.8356164383561644,
+              "f1": 0.8652482269503546,
+              "support": 73
+            },
+            "residual": {
+              "precision": 0.7368421052631579,
+              "recall": 0.7,
+              "f1": 0.717948717948718,
+              "support": 20
+            }
+          },
+          "selective": {
+            "threshold": 0.7559999823570251,
+            "coverage": 0.8342105263157895,
+            "accuracy_on_covered": 0.9305993690851735,
+            "abstained": 63,
+            "top3_contains_true_on_abstained": 0.9841269841269841
+          }
+        }
+      },
+      "ece_before_temperature": 0.02817273562584899,
+      "temperature": 0.8633277895252571,
+      "C": 0.01,
+      "description": "effnet frozen embeddings + logistic regression, temperature-scaled"
     }
   },
   "latency_ms_single_image_cpu": {
-    "clip": 55.9
+    "clip": 55.9,
+    "effnet": 23.9
   },
   "near_duplicates": {
     "cosine_threshold": 0.95,
