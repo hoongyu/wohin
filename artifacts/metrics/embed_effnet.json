@@ -1,0 +1,15 @@
+{
+  "backbone": "effnet",
+  "config": {
+    "kind": "timm",
+    "arch": "efficientnet_b0",
+    "url": "https://github.com/huggingface/pytorch-image-models/releases/download/v0.1-weights/efficientnet_b0_ra-3dd342df.pth"
+  },
+  "n_images": 7279,
+  "dim": 1280,
+  "load_seconds": 4.1,
+  "embed_seconds": 406.7,
+  "images_per_second": 17.9,
+  "latency_ms_single_image": 23.9,
+  "torch_threads": 4
+}

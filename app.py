@@ -34,7 +34,8 @@ T = {
     "tab_photo": {"de": "📷 Foto", "en": "📷 Photo"},
     "tab_text": {"de": "🔎 Suche", "en": "🔎 Search"},
     "camera": {"de": "Foto aufnehmen", "en": "Take a photo"},
-    "upload": {"de": "…oder Bild hochladen", "en": "…or upload an image"},
+    "upload": {"de": "Bild hochladen", "en": "Upload an image"},
+    "use_camera": {"de": "Kamera benutzen", "en": "Use camera"},
     "one_item": {"de": "Ein Gegenstand pro Foto, möglichst formatfüllend.", "en": "One item per photo, filling most of the frame."},
     "top3": {"de": "Das Modell sieht:", "en": "The model sees:"},
     "confident": {"de": "Erkannt: **{m}**. Nicht richtig? Wähle unten das Material.", "en": "Detected: **{m}**. Not right? Pick the material below."},
@@ -113,7 +114,7 @@ def bin_card(o, hint: dict | None = None) -> None:
     text = hint[lang] if hint else o.text[lang]
     src = f'<a href="{o.source_url}" target="_blank">{t("source")}</a>'
     bsr = "" if o.verified == "true" else f' · <a href="{o.bsr_az}" target="_blank"><b>{t("bsr")}</b></a>'
-    if hint:  # unverified lexicon item: only BSR link plus the verified facts in the hint
+    if hint or o.source_url == o.bsr_az:  # unverified lexicon item: only BSR link plus the verified facts in the hint
         src = f'<a href="{o.bsr_az}" target="_blank"><b>{t("bsr")}</b></a>'
         bsr = ""
     border = o.colour if o.colour.upper() != "#EDEDED" else "#9E9E9E"
@@ -173,7 +174,7 @@ tab_photo, tab_text = st.tabs([t("tab_photo"), t("tab_text")])
 
 with tab_photo:
     st.caption(t("one_item"))
-    cam = st.camera_input(t("camera"), label_visibility="collapsed")
+    cam = st.camera_input(t("camera"), label_visibility="collapsed") if st.toggle(t("use_camera")) else None
     up = st.file_uploader(t("upload"), type=["jpg", "jpeg", "png", "webp"])
     file = cam or up
     if file is not None:
