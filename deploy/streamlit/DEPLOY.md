@@ -11,3 +11,5 @@ Why this folder exists: Community Cloud installs the first dependency file it fi
 5. An app deployed from a private repository is private. After the repository is public, make the app public in its settings.
 
 Checked locally on 2026-11-03: `uv pip compile deploy/streamlit/requirements.txt` for Python 3.11 on Linux x86_64 resolves 60 packages with torch 2.15.0+cpu and no CUDA packages, and `tests/test_deploy.py` runs this entry point with Streamlit's AppTest.
+
+Deployed with these steps on 2026-11-03: https://wohin-berlin.streamlit.app, public. Build output and browser checks are in `docs/build-log.md`, "Live deployment".

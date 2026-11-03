@@ -105,13 +105,20 @@ Run by the owner's local Claude Code session on the owner's Windows 11 laptop (D
 - `uv pip compile deploy/streamlit/requirements.txt` for Python 3.11 on Linux x86_64 (Community Cloud tries uv first, then pip): 60 packages, torch 2.15.0+cpu, torchvision 0.29.2+cpu, no CUDA packages.
 - New `tests/test_deploy.py`: the two requirements files match, and the entry point runs the app under Streamlit's AppTest (the text search for "pizza box" gives Cardboard). `uv run pytest -q`: 36 passed.
 
+## Live deployment (2026-11-03)
+
+- Deployed from branch `main` with entry point `deploy/streamlit/app.py` and Python 3.11 at https://wohin-berlin.streamlit.app. The app is public: "Make this app public" is on in its sharing settings, and an anonymous request ends on the app with HTTP 200 after Community Cloud's sign-in check (3 redirects).
+- Build: uv resolved 60 packages from `deploy/streamlit/requirements.txt`, including torch 2.15.0+cpu and torchvision 0.29.2+cpu; Community Cloud then replaced pyarrow 26.0.1 with 24.0.0 because of a known segfault. From cloning the repository to "Uvicorn server started" took 23 s.
+- Checked in a browser: the text search for "pizza box" gives Cardboard with the BSR A–Z hint (our sources do not cover greasy boxes). Three RealWaste test-split photos (`Glass_109.jpg`, `Cardboard_106.jpg`, `Metal_102.jpg`, loaded from the dataset authors' GitHub mirror and not stored in this repository) were all classified correctly (3 of 3), each shown at 100%. For the glass photo, the questions (bottle or jar: yes; deposit logo: no; colour: white) ended at "Glass container: white (clear) glass", marked as verified.
+- Timing: the first photo, which also downloads about 600 MB of CLIP weights, showed its result within 34 s of the upload; the next photo took 1.4 s from upload to result.
+
 ## What the owner still has to do
 
 - [x] Team name and members in `README.md`: Lampwright, hoongyu (solo).
 - [x] Licence: MIT for the code (`LICENSE`); the trained heads in `artifacts/model/` are CC BY-NC-SA 4.0 (`README.md` section 12).
 - [ ] Review the rules and texts in `rules/berlin.yaml` and `rules/items.yaml`, especially known issue 1 (lid colours).
-- [ ] Deploy on Streamlit Community Cloud following `deploy/streamlit/DEPLOY.md` (a Hugging Face Docker Space now needs PRO, see "Hosting change"); check the link in `README.md` ("Live demo") and in Devpost.
+- [x] Deployed on Streamlit Community Cloud: https://wohin-berlin.streamlit.app (see "Live deployment"); the link is in `README.md` ("Live demo") and in `docs/submission/neural-storm.md`.
 - [ ] Try the deployed app with a few real photos from home; consider adding them as a qualitative example (do not add to the metrics).
 - [ ] Optionally record a narrated demo video (a GIF made from screenshots is at `docs/img/demo.gif`).
-- [ ] Merge `mvp` into `main` (or open a PR yourself), then make the repository public.
+- [x] `mvp` merged into `main` (fast-forward); the repository is public since 2026-11-03.
 - [ ] Submit on Devpost (text ready in `docs/submission/neural-storm.md`): Neural Storm before **2026-11-04 15:30 CET**; Green Shift Hacks before **2026-11-17 23:00 CET** (use `docs/judging/green-shift.md` for the story).

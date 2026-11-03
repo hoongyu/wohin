@@ -11,7 +11,7 @@ Track 2 *Green Planet*, problem statement **GP-05: Smart Waste Segregation Syste
 - **Calibrated uncertainty, used in the product:** ECE drops from 0.098 to 0.027 after temperature scaling. At the validation-chosen threshold the app answers 83 % of test photos with 95 % accuracy and asks the user for the rest (true class in the top three 96 % of the time). Evidence: `docs/img/reliability.png`, `test.json` → `selective`.
 - **Second backbone compared:** EfficientNet-B0 gets 0.868 accuracy at 24 ms/image vs. CLIP 0.899 at 56 ms/image on CPU; the trade-off is documented and CLIP is deployed.
 - **Robustness checks:** per-source metrics (RealWaste 0.900, TrashNet 0.897 accuracy), per-class precision/recall/F1, confusion matrices, and a near-duplicate leakage check (5.2 % of test images have a near-duplicate in train; accuracy without them is 0.896).
-- **Engineering:** small modules with one job each, a declarative rule engine (`rules/berlin.yaml`) instead of hard-coded if-chains, download fallbacks for blocked hosts, seeded splits, and 34 pytest tests (rules reachability, sources, DE/EN completeness, lexicon lookups, split disjointness, a prediction smoke test that needs no weights). `uv run python -m wohin.train` reproduces every number from cached embeddings.
+- **Engineering:** small modules with one job each, a declarative rule engine (`rules/berlin.yaml`) instead of hard-coded if-chains, download fallbacks for blocked hosts, seeded splits, and 36 pytest tests (rules reachability, sources, DE/EN completeness, lexicon lookups, split disjointness, a prediction smoke test that needs no weights, the deployment entry point). `uv run python -m wohin.train` reproduces every number from cached embeddings.
 
 ## Impact & Usefulness (25 %)
 
@@ -22,10 +22,10 @@ Track 2 *Green Planet*, problem statement **GP-05: Smart Waste Segregation Syste
 
 ## README & Documentation (20 %)
 
-The README covers every required item: title and problem statement number, team (placeholder for the owner), problem and solution, technology stack, setup, running locally, screenshots and a demo GIF, model metrics with a baseline, limitations, and disclosure of Claude Code, pretrained models and datasets. Supporting docs: the design (`docs/superpowers/specs/2026-11-02-wohin-design.md`), this file, `docs/judging/green-shift.md`, `docs/build-log.md`, and `deploy/huggingface/DEPLOY.md`.
+The README covers every required item: title and problem statement number, team (Lampwright: hoongyu, solo), problem and solution, technology stack, setup, running locally, screenshots and a demo GIF, model metrics with a baseline, limitations, and disclosure of Claude Code, pretrained models and datasets. Supporting docs: the design (`docs/superpowers/specs/2026-11-02-wohin-design.md`), this file, `docs/judging/green-shift.md`, `docs/build-log.md`, and `deploy/streamlit/DEPLOY.md`.
 
 ## Demo & Presentation (20 %)
 
 - **Working demo:** `uv run streamlit run app.py`. Screenshots in `docs/img/` were taken automatically from the running app (photo → prediction → questions → bin card; low-confidence path; English and German text search).
-- **Deployment:** the live demo runs on Streamlit Community Cloud from `deploy/streamlit/` (an entry point and CPU-only requirements, checked by `tests/test_deploy.py`): https://wohin-berlin.streamlit.app. A Hugging Face Docker Space is also ready in `deploy/huggingface/` for PRO accounts; that image was built and run locally, and it predicts offline because the weights are baked in (`docs/build-log.md`, "Local Docker check").
+- **Deployment:** the live demo runs on Streamlit Community Cloud from `deploy/streamlit/` (an entry point and CPU-only requirements, checked by `tests/test_deploy.py`): https://wohin-berlin.streamlit.app. It was checked in a browser on 2026-11-03 with the text search and three test photos, all classified correctly (`docs/build-log.md`, "Live deployment"). A Hugging Face Docker Space is also ready in `deploy/huggingface/` for PRO accounts; that image was built and run locally, and it predicts offline because the weights are baked in (`docs/build-log.md`, "Local Docker check").
 - **Demo GIF:** `docs/img/demo.gif`.

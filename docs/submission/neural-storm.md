@@ -16,7 +16,7 @@ Photograph one item. Wohin predicts its material (8 classes) with calibrated pro
 - **Model:** frozen OpenCLIP ViT-B/32 (LAION-2B) embeddings, a logistic-regression head tuned on validation macro-F1, temperature scaling, and an abstain threshold set to the lowest value that reaches 95% validation accuracy.
 - **Baselines:** CLIP zero-shot on the same backbone, and an EfficientNet-B0 head for accuracy versus speed.
 - **Rules:** a small decision tree per material in YAML, built only from official Berlin sources. Every outcome carries a source URL and a verification level, and only verified rules are stated as fact.
-- **App:** Streamlit, German and English; 34 pytest tests.
+- **App:** Streamlit, German and English; 36 pytest tests.
 
 ## Challenges we ran into
 
