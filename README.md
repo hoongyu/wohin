@@ -6,6 +6,7 @@ Neural Storm 2026 · Track 2 *Green Planet* · Problem statement **GP-05: Smart 
 > **Team:** Lampwright · [hoongyu](https://github.com/hoongyu) (solo, master's student at TU Berlin)
 >
 > **Live demo:** https://wohin-berlin.streamlit.app
+> (free hosting sleeps after 12 hours without visitors: click "Yes, get this app back up!" and allow about a minute; the first photo then takes about half a minute while the model downloads)
 
 ![Wohin demo](docs/img/demo.gif)
 

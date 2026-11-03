@@ -55,7 +55,7 @@ python, pytorch, open-clip, timm, scikit-learn, scipy, numpy, pandas, pillow, py
 ## Links
 
 - Repository: https://github.com/hoongyu/wohin
-- Live demo: https://wohin-berlin.streamlit.app
+- Live demo: https://wohin-berlin.streamlit.app (free hosting sleeps after 12 hours without visitors: click "Yes, get this app back up!" and allow about a minute; the first photo then takes about half a minute while the model downloads)
 - Demo GIF (no video): https://github.com/hoongyu/wohin/blob/main/docs/img/demo.gif
 
 ## Images
