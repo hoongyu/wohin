@@ -3,9 +3,9 @@
 **Photo-based waste sorting assistant for Berlin.**
 Neural Storm 2026 · Track 2 *Green Planet* · Problem statement **GP-05: Smart Waste Segregation System**
 
-> **Team:** `TODO(owner): team name and members`
+> **Team:** Lampwright · [hoongyu](https://github.com/hoongyu) (solo, master's student at TU Berlin)
 >
-> **Live demo:** `TODO(owner): Hugging Face Space link`
+> **Live demo:** https://huggingface.co/spaces/hongyu0219/wohin
 
 ![Wohin demo](docs/img/demo.gif)
 
@@ -200,4 +200,6 @@ deploy/huggingface/    Docker Space (Dockerfile, Space README, make_space.py) an
 
 ## 12. Licence
 
-`TODO(owner): choose a licence for the code.`
+- **Code:** MIT, see [`LICENSE`](LICENSE).
+- **Trained classifier heads** (`artifacts/model/head.joblib`, `artifacts/model/head_effnet.joblib`): CC BY-NC-SA 4.0. They were trained on TrashNet (MIT) and RealWaste, and the RealWaste copy we used states CC BY-NC-SA 4.0 (section 11). So the heads follow its terms: non-commercial use only, credit the dataset authors, and share models derived from them under the same licence.
+- **Pretrained backbones** (OpenCLIP, timm) keep their own licences (section 11).

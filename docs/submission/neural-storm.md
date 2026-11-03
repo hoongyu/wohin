@@ -50,13 +50,13 @@ python, pytorch, open-clip, timm, scikit-learn, scipy, numpy, pandas, pillow, py
 
 ## Links
 
-- Repository: https://github.com/hoongyu/wohin (must be public before you submit)
-- Live demo: TODO(owner): Hugging Face Space link
-- Video (optional): TODO(owner)
+- Repository: https://github.com/hoongyu/wohin
+- Live demo: https://huggingface.co/spaces/hongyu0219/wohin
+- Demo GIF (no video): https://github.com/hoongyu/wohin/blob/main/docs/img/demo.gif
 
 ## Team
 
-TODO(owner): team name and members, the same as in `README.md`.
+Lampwright: hoongyu (solo), master's student at TU Berlin.
 
 ## AI disclosure
 

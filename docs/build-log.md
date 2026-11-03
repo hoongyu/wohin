@@ -19,7 +19,7 @@ Definition of done, checked in this session:
 - `uv run pytest`: **34 passed**.
 - `uv run python -m wohin.train` from cached embeddings: reproduced the same test metrics on two runs (C, T, threshold and all scores identical).
 - `uv run streamlit run app.py`: ran headless and was driven with Playwright/Chromium through the photo flow, low-confidence flow, English search and German search, with no page errors and no Streamlit exceptions.
-- README complete except `TODO(owner)` placeholders for team, live link and licence.
+- README complete except `TODO(owner)` placeholders for team, live link and licence (filled in on 2026-11-03).
 
 Additions beyond the task: a near-duplicate leakage check in the evaluation, a zero-shot confusion matrix, top-3 accuracy, and a demo GIF built from the screenshots.
 
@@ -100,8 +100,8 @@ Run by the owner's local Claude Code session on the owner's Windows 11 laptop (D
 
 ## What the owner still has to do
 
-- [ ] Replace `TODO(owner): team name and members` in `README.md`.
-- [ ] Choose a licence (`README.md` section 12, and add a `LICENSE` file).
+- [x] Team name and members in `README.md`: Lampwright, hoongyu (solo).
+- [x] Licence: MIT for the code (`LICENSE`); the trained heads in `artifacts/model/` are CC BY-NC-SA 4.0 (`README.md` section 12).
 - [ ] Review the rules and texts in `rules/berlin.yaml` and `rules/items.yaml`, especially known issue 1 (lid colours).
 - [ ] Deploy the Hugging Face Space following `deploy/huggingface/DEPLOY.md`; put the link into `README.md` ("Live demo") and into Devpost.
 - [ ] Try the deployed app with a few real photos from home; consider adding them as a qualitative example (do not add to the metrics).
