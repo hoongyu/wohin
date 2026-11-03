@@ -1,6 +1,10 @@
 # Devpost text: Neural Storm 2026
 
-Paste each section into the matching Devpost field. Track: Green Planet. Problem statement: **GP-05: Smart Waste Segregation System**. Every figure below is from `README.md` or `docs/build-log.md`, which take them from `artifacts/metrics/test.json`.
+Paste each section into the matching Devpost field; the sections from Inspiration to What's next go together into "About the project". Track: Green Planet. Problem statement: **GP-05: Smart Waste Segregation System**. Every figure below is from `README.md` or `docs/build-log.md`, which take them from `artifacts/metrics/test.json`.
+
+## Elevator pitch
+
+Photograph one item and Wohin names the right Berlin bin: a calibrated image classifier, one or two follow-up questions, and rules taken from official sources.
 
 ## Inspiration
 
@@ -53,6 +57,11 @@ python, pytorch, open-clip, timm, scikit-learn, scipy, numpy, pandas, pillow, py
 - Repository: https://github.com/hoongyu/wohin
 - Live demo: https://wohin-berlin.streamlit.app
 - Demo GIF (no video): https://github.com/hoongyu/wohin/blob/main/docs/img/demo.gif
+
+## Images
+
+- Thumbnail (3:2): `docs/img/devpost_thumbnail.png`
+- Gallery: `docs/img/app_photo_prediction.png`, `docs/img/app_photo_result.png`, `docs/img/app_low_confidence.png`, `docs/img/app_search_teabag.png`, `docs/img/app_search_pizzakarton_de.png`, `docs/img/demo.gif`
 
 ## Team
 
