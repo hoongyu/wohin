@@ -5,7 +5,7 @@ Neural Storm 2026 · Track 2 *Green Planet* · Problem statement **GP-05: Smart 
 
 > **Team:** Lampwright · [hoongyu](https://github.com/hoongyu) (solo, master's student at TU Berlin)
 >
-> **Live demo:** https://huggingface.co/spaces/hongyu0219/wohin
+> **Live demo:** https://wohin-berlin.streamlit.app
 
 ![Wohin demo](docs/img/demo.gif)
 
@@ -185,7 +185,8 @@ artifacts/model/       trained heads (committed, ~30 KB each) + zero-shot text e
 artifacts/metrics/     train.json, test.json, embedding timings
 docs/judging/          how Wohin addresses each judging criterion
 docs/submission/       Devpost text, ready to paste
-deploy/huggingface/    Docker Space (Dockerfile, Space README, make_space.py) and deployment steps
+deploy/streamlit/      live demo on Streamlit Community Cloud: entry point, CPU-only requirements, steps
+deploy/huggingface/    Docker Space for Hugging Face PRO accounts (Dockerfile, Space README, make_space.py)
 ```
 
 ## 11. Disclosure: tools, models, data

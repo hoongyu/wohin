@@ -98,12 +98,19 @@ Run by the owner's local Claude Code session on the owner's Windows 11 laptop (D
 - `docker run -p 18501:8501`: `/_stcore/health` returned `ok`, `GET /` returned HTTP 200.
 - In a container started with `--network none`, the bottle photo cropped from `docs/img/app_photo_prediction.png` gave glass 0.999 (confident), as in that screenshot. First prediction 38.3 s including model load, then 0.09 s.
 
+## Hosting change (2026-11-03)
+
+- Creating the Hugging Face Docker Space from the owner's free account failed with `402 Payment Required`: Gradio and Docker Spaces on the free CPU tier now need a PRO subscription (USD 9 per month, https://huggingface.co/pricing). Nothing was created.
+- The live demo moves to Streamlit Community Cloud, which is free (up to about 2.7 GB of memory). Community Cloud installs the first dependency file it finds, next to the entry point before the repository root, and the root `uv.lock` pins the CUDA build of torch on Linux. So `deploy/streamlit/` holds an entry point that runs `app.py` and its own CPU-only `requirements.txt`.
+- `uv pip compile deploy/streamlit/requirements.txt` for Python 3.11 on Linux x86_64 (Community Cloud tries uv first, then pip): 60 packages, torch 2.15.0+cpu, torchvision 0.29.2+cpu, no CUDA packages.
+- New `tests/test_deploy.py`: the two requirements files match, and the entry point runs the app under Streamlit's AppTest (the text search for "pizza box" gives Cardboard). `uv run pytest -q`: 36 passed.
+
 ## What the owner still has to do
 
 - [x] Team name and members in `README.md`: Lampwright, hoongyu (solo).
 - [x] Licence: MIT for the code (`LICENSE`); the trained heads in `artifacts/model/` are CC BY-NC-SA 4.0 (`README.md` section 12).
 - [ ] Review the rules and texts in `rules/berlin.yaml` and `rules/items.yaml`, especially known issue 1 (lid colours).
-- [ ] Deploy the Hugging Face Space following `deploy/huggingface/DEPLOY.md`; put the link into `README.md` ("Live demo") and into Devpost.
+- [ ] Deploy on Streamlit Community Cloud following `deploy/streamlit/DEPLOY.md` (a Hugging Face Docker Space now needs PRO, see "Hosting change"); check the link in `README.md` ("Live demo") and in Devpost.
 - [ ] Try the deployed app with a few real photos from home; consider adding them as a qualitative example (do not add to the metrics).
 - [ ] Optionally record a narrated demo video (a GIF made from screenshots is at `docs/img/demo.gif`).
 - [ ] Merge `mvp` into `main` (or open a PR yourself), then make the repository public.

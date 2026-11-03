@@ -51,7 +51,7 @@ python, pytorch, open-clip, timm, scikit-learn, scipy, numpy, pandas, pillow, py
 ## Links
 
 - Repository: https://github.com/hoongyu/wohin
-- Live demo: https://huggingface.co/spaces/hongyu0219/wohin
+- Live demo: https://wohin-berlin.streamlit.app
 - Demo GIF (no video): https://github.com/hoongyu/wohin/blob/main/docs/img/demo.gif
 
 ## Team

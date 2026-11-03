@@ -1,5 +1,7 @@
 # Deploying Wohin to a Hugging Face Space (owner)
 
+> **Status 2026-11-03:** creating this Space from a free account fails with `402 Payment Required`. Hugging Face now asks for a PRO subscription to host Gradio and Docker Spaces on the free CPU tier (Static Spaces stay free). The live demo therefore runs on Streamlit Community Cloud, see `deploy/streamlit/DEPLOY.md`. The steps below still work with a PRO account.
+
 Wohin runs as a **Docker** Space:
 
 - Hugging Face retired the built-in Streamlit SDK on 2025-04-30; Streamlit apps now use the Docker SDK.
